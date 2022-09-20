@@ -258,7 +258,7 @@
 </div>
 <div class="section level3">
 <h3 id="what-is-an-image"><strong>What is an image?</strong><a class="anchor" aria-label="anchor" href="#what-is-an-image"></a></h3>
-Images are essentially a matrix in which each index is assigned a number, representing the value at that specifc point.
+Images are essentially a matrix in which each index is assigned a number, representing the value at that specific point.
 <p style="text-align: justify;">
 These indices, more commonly called pixels, are a measure of how many photons hit that particular position on the camera sensor. As these images are matrices, we can do many of the same mathematical operations on images as we do on matrices. However, we don’t want to manually generate every image by populating a matrix. This means that we will have to have some manner of interacting with image files on our computer, programmatically.
 </p>
@@ -1093,7 +1093,7 @@ If you have done the above exercise of using <strong>stardist</strong> to perfor
 </p>
 </section><section id="summary-and-conclusions"><h2 class="section-heading">Summary and Conclusions</h2>
 <hr class="half-width"><p style="text-align: justify;">
-In undertaking this workshop, we have learned to import, explore and analyse fluorescence microscopy images, and how to perform some basic image analyses using several packages, in Python. We have also learned how to perform clustering analyses, through implementing unsupervised machine learning algorithms (GMM). Further to this, we provided an introduction into the use of deep learning algorithms for use in nuclei segmentation, which can provide a fast, accurate and powerful count of the nuclei present in an image; this can be invaluable for analysing large amounts of data. Following the guided links, you can start to explore more advanced image analysis techniques, and <em>Learn To Discover</em> how these can help you further your own work, and reserach.
+In undertaking this workshop, we have learned to import, explore and analyse fluorescence microscopy images, and how to perform some basic image analyses using several packages, in Python. We have also learned how to perform clustering analyses, through implementing unsupervised machine learning algorithms (GMM). Further to this, we provided an introduction into the use of deep learning algorithms for use in nuclei segmentation, which can provide a fast, accurate and powerful count of the nuclei present in an image; this can be invaluable for analysing large amounts of data. Following the guided links, you can start to explore more advanced image analysis techniques, and <em>Learn To Discover</em> how these can help you further your own work, and research.
 </p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
@@ -1102,10 +1102,16 @@ In undertaking this workshop, we have learned to import, explore and analyse flu
 <div class="callout-inner">
 <h3 class="callout-title">Keypoints</h3>
 <div class="callout-content">
-<ul><li>Use <code>.md</code> files for episodes when you want static content</li>
-<li>Use <code>.Rmd</code> files for episodes when you need to generate output</li>
-<li>Run <code>sandpaper::check_lesson()</code> to identify any issues with your lesson</li>
-<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson locally</li>
+<ul><li>The key image processing libraries in Python include <code>Python Imaging Library</code>, <code>Sci-kit Image</code>, <code>Scipy.ndimage</code> and <code>OpenCV</code>.</li>
+<li>
+<code>Numpy</code> package converts an image object into a numerical array.</li>
+<li>
+<code>ravel()</code> method of the array flattens an image into a single series of numbers.</li>
+<li>The image intensities can be equalised by a function <code>exposure.equalize_hist</code> from the <code>exposure</code> module in <code>skimage</code> library.</li>
+<li>Clustering of unlabeled data can be performed by several different ways using module <code>sklearn.cluster</code>.</li>
+<li>Image segmentation allows us to locate objects and boundaries (lines, curves, etc.) within an image.</li>
+<li>
+<code>StarDist</code> package uses deep learning for nuclei segmentation.</li>
 </ul></div>
 </div>
 </div>
