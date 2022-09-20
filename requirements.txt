@@ -1,10 +1,11 @@
 pandas
 matplotlib
 scikit-learn
+scikit-image
 jupytext
 nibabel
 opencv-python
 seaborn
 pillow
 numpy
-skimage
+

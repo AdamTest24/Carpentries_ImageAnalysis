@@ -85,6 +85,15 @@ library(reticulate)
 use_virtualenv("carp-env")
 ```
 
+
+In a blank Jupyter Notebook, open a new cell, and write your own Python code to import the following packages and modules:
+
+- Import pyplot as plt from matplotlib
+- Import numpy
+- Import glob
+- From PIL, we need the Image module
+- From skimage, we need the exposure module
+
 ```{python}
 # Loading the packages
 
