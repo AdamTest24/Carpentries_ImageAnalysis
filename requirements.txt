@@ -6,6 +6,6 @@ jupytext
 nibabel
 opencv-python
 seaborn
-pillow
+Pillow==9.2.0
 numpy
-
+skimage
