@@ -6,8 +6,8 @@ pip install nibabel
 
 mkdir -p ~/.virtualenvs/
 
-python3 -m venv ~/.virtualenvs/r-env
-source ~/.virtualenvs/r-env/bin/activate
+python3 -m venv ~/.virtualenvs/carp-env
+source ~/.virtualenvs/carp-env/bin/activate
 
 pip install -r requirements.txt
 
