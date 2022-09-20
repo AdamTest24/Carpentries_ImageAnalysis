@@ -8,10 +8,12 @@
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor traning for instance)
 # incubator: The Carpentries Incubator
-carpentry: incubator
+carpentry: l2d
+varnish: LearnToDiscover/varnish
+sandpaper: LearnToDiscover/sandpaper@l2d
 
 # Overall title for pages.
-title: Lesson Title
+title: Microscopic Image Analysis
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
 created: ~
@@ -59,7 +61,11 @@ contact: team@carpentries.org
 
 # Order of episodes in your lesson 
 episodes: 
+  - 01-section1.Rmd
 
+#  - 03-section3.Rmd
+#  - 04-section4.Rmd
+    
 # Information for Learners
 learners: 
 
