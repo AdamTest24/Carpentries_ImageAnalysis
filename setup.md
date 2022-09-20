@@ -2,11 +2,13 @@
 title: Setup
 ---
 
-::::::::::::::::::
+:::::::::::::::::: prereq
 Before attempting today's lessons, you will need to have installed the following:
+
 - Python 3.9
 - conda
 - pip3
+
 :::::::::::::::::: 
 
 If you have previously attended the first 2 days of the workshop, it is most likely that the above installations and prerequisites would have been met. Now the next step is to create a new environment, where we will install all the modules, tools and packages required for this particular lesson.
@@ -80,5 +82,5 @@ After running these 2 commands, you will be able to select your virtual environm
 
 ## Dataset
 Dataset for this lesson includes:
-
+[human_ht29_colon_cancer_2_images](data/human_ht29_colon_cancer_2_images.zip)
 
