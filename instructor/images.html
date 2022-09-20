@@ -221,86 +221,53 @@
 <h3 id="01-section1-figure-3">Figure 3</h3>
 <figure><img src="../fig/combined.png" class="figure mx-auto d-block"> The combined image shows red (nuclei) and blue (cytoplasm) colors.</figure><hr>
 <h3 id="01-section1-figure-4">Figure 4</h3>
+<figure><img src="../fig/01-section1-rendered-unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="01-section1-figure-5">Figure 5</h3>
+<figure><img src="../fig/01-section1-rendered-unnamed-chunk-10-3.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="01-section1-figure-6">Figure 6</h3>
+<figure><img src="../fig/01-section1-rendered-unnamed-chunk-12-5.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="01-section1-figure-7">Figure 7</h3>
+<figure><img src="../fig/01-section1-rendered-unnamed-chunk-13-7.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="01-section1-figure-8">Figure 8</h3>
+<figure><img src="../fig/01-section1-rendered-unnamed-chunk-15-9.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="01-section1-figure-9">Figure 9</h3>
+<figure><img src="../fig/01-section1-rendered-unnamed-chunk-16-11.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="01-section1-figure-10">Figure 10</h3>
+<figure><img src="../fig/01-section1-rendered-unnamed-chunk-18-13.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="01-section1-figure-11">Figure 11</h3>
 <p aria-hidden="true">Image 1 of 2: ‘Methods Comparison’</p>
 <p aria-hidden="true">Image 2 of 2: ‘Success Comparison’</p>
 <figure><img src="../fig/ClusterMethods.png" alt="Methods Comparison" class="figure mx-auto d-block"><img src="../fig/Clustering_comparison.png" alt="Success Comparison" class="figure mx-auto d-block"></figure><hr>
-<h3 id="01-section1-figure-5">Figure 5</h3>
+<h3 id="01-section1-figure-12">Figure 12</h3>
+<figure><img src="../fig/01-section1-rendered-unnamed-chunk-21-15.png" width="576" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="01-section1-figure-13">Figure 13</h3>
+<figure><img src="../fig/01-section1-rendered-unnamed-chunk-23-17.png" width="576" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="01-section1-figure-14">Figure 14</h3>
 <figure id="segmentation"><h2 class="section-heading">Segmentation</h2>
 <hr class="half-width">
 <p>Image segmentation allows us to locate objects and boundaries (lines, curves, <em>etc.</em>) within an image. Conventional methods make use of a threshold value to distinguish between different regions and/or cells. In this lesson, we will use a Python package called <a href="https://github.com/stardist/stardist" class="external-link"><strong>StarDist</strong></a>, which makes use of deep learning methods to perform nuclei segmentation. It is designed particularly for nuclei segmentation. <strong>StarDist</strong> comes with pretrained models, that are likely suitable for your micrograph images. However, it is also possible to train your model specifically for your dataset.</p>
-<div class="codewrapper sourceCode" id="cb170">
+<div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Load as images - Using Raw images</span></span>
-<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-3"><a href="#cb170-3" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> Image.<span class="bu">open</span>(ch1_files[<span class="dv">0</span>])</span>
-<span id="cb170-4"><a href="#cb170-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-5"><a href="#cb170-5" aria-hidden="true" tabindex="-1"></a>nuclei <span class="op">=</span> np.zeros(np.shape(im))</span>
-<span id="cb170-6"><a href="#cb170-6" aria-hidden="true" tabindex="-1"></a>nuclei[:, :, <span class="dv">0</span>] <span class="op">=</span> data1</span>
-<span id="cb170-7"><a href="#cb170-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-8"><a href="#cb170-8" aria-hidden="true" tabindex="-1"></a>plt.figure(dpi<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb170-9"><a href="#cb170-9" aria-hidden="true" tabindex="-1"></a>plt.imshow(nuclei.astype(<span class="bu">int</span>))</span>
-<span id="cb170-10"><a href="#cb170-10" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span>
-<span id="cb170-11"><a href="#cb170-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-12"><a href="#cb170-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Load as images - Using Raw images</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> Image.<span class="bu">open</span>(ch1_files[<span class="dv">0</span>])</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>nuclei <span class="op">=</span> np.zeros(np.shape(im))</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>nuclei[:, :, <span class="dv">0</span>] <span class="op">=</span> data1</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>plt.figure(dpi<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>plt.imshow(nuclei.astype(<span class="bu">int</span>))</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'Image' is not defined
-
-Detailed traceback:
-  File "&lt;string&gt;", line 1, in &lt;module&gt;</code></pre>
+<pre class="output" tabindex="0"><code>(-0.5, 511.5, 511.5, -0.5)</code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'np' is not defined
-
-Detailed traceback:
-  File "&lt;string&gt;", line 1, in &lt;module&gt;</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data1' is not defined
-
-Detailed traceback:
-  File "&lt;string&gt;", line 1, in &lt;module&gt;</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "&lt;string&gt;", line 1, in &lt;module&gt;</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "&lt;string&gt;", line 1, in &lt;module&gt;</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "&lt;string&gt;", line 1, in &lt;module&gt;</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "&lt;string&gt;", line 1, in &lt;module&gt;</code></pre>
-</div>
-<pre><code>from stardist.models import StarDist2D
+<figure><img src="../fig/01-section1-rendered-unnamed-chunk-24-19.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><pre><code>from stardist.models import StarDist2D
 from stardist import random_label_cmap
 
 from csbdeep.utils import Path, normalize
@@ -437,7 +404,9 @@ print("The total number of nuclei in the image are: ", len(details['points']))
 If you have done the above exercise of using <strong>stardist</strong> to perform segmentation for the cytoplasm channel, then you may have noticed pecularities. These can be justified by StarDist really only being designed for accurate segmentation of nuclei. However, if you are interested in cytoplasm segmentation, then using <strong>cellpose</strong> is better suited for this application. This Python package is more specialised, and better apllied to cell and nucleus segmentation. After completing this workshop, you will observe that <strong>stardist</strong> and <strong>cellpose</strong> both work in a similar fashion. For more information and documentation, please follow this <a href="https://github.com/MouseLand/cellpose" class="external-link">link</a>.
 </p>
 </figure><hr>
-<h3 id="01-section1-figure-6">Figure 6</h3>
+<h3 id="01-section1-figure-15">Figure 15</h3>
+<figure><img src="../fig/01-section1-rendered-unnamed-chunk-24-19.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="01-section1-figure-16">Figure 16</h3>
 <figure><img src="../fig/seg3.png" class="figure mx-auto d-block"></figure><hr></section>
 </div>
     </main>

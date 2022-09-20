@@ -76,61 +76,24 @@ For other basic processing and plotting in Python, the scientific packages Numpy
 
 
 
+In a blank Jupyter Notebook, open a new cell, and write your own Python code to import the following packages and modules:
+
+- Import pyplot as plt from matplotlib
+- Import numpy
+- Import glob
+- From PIL, we need the Image module
+- From skimage, we need the exposure module
+
+
 ```python
 # Loading the packages
 
 from PIL import Image # Python Image Library (Pillow)
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'PIL'
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.local/share/renv/cache/v5/R-4.2/x86_64-pc-linux-gnu/reticulate/1.24/ffdf27627a3c1537478073c43b6e7980/reticulate/python/rpytools/loader.py", line 39, in _import_hook
-    module = _import(
-```
-
-```python
 from skimage import exposure
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'skimage'
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.local/share/renv/cache/v5/R-4.2/x86_64-pc-linux-gnu/reticulate/1.24/ffdf27627a3c1537478073c43b6e7980/reticulate/python/rpytools/loader.py", line 39, in _import_hook
-    module = _import(
-```
-
-```python
 import matplotlib.pyplot as plt
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'matplotlib'
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.local/share/renv/cache/v5/R-4.2/x86_64-pc-linux-gnu/reticulate/1.24/ffdf27627a3c1537478073c43b6e7980/reticulate/python/rpytools/loader.py", line 39, in _import_hook
-    module = _import(
-```
-
-```python
 import numpy as np
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'numpy'
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.local/share/renv/cache/v5/R-4.2/x86_64-pc-linux-gnu/reticulate/1.24/ffdf27627a3c1537478073c43b6e7980/reticulate/python/rpytools/loader.py", line 39, in _import_hook
-    module = _import(
-```
-
-```python
 import glob
 ```
 
@@ -164,27 +127,13 @@ im3 = Image.open(ch3_files[0])
 ```
 
 ```{.output}
-data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice1_channel1.tif : data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_L15f00d0_slice2_channel3.tif 
+data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice6_channel1.tif : data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice1_channel3.tif 
 
 Correctly paired .... 
 
 data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice1_channel1.tif : data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice1_channel3.tif 
 
 data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_L15f00d0_slice6_channel1.tif : data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_L15f00d0_slice6_channel3.tif 
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'Image' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'Image' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ```
 
 
@@ -200,39 +149,8 @@ axs[1].imshow(im3);
 axs[1].axis('off');
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+(-0.5, 511.5, 511.5, -0.5)
 ```
 
 ![](fig/img1.png)
@@ -242,11 +160,8 @@ Detailed traceback:
 type(im1)
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'im1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+<class 'PIL.TiffImagePlugin.TiffImageFile'>
 ```
 
 <p style='text-align: justify;'>
@@ -267,32 +182,10 @@ print('')
 print('Total number of pixels is', data1.size) # check the size of array
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'np' is not defined
+```{.output}
+Image has 512 by 512 pixels
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'np' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+Total number of pixels is 262144
 ```
 
 
@@ -307,32 +200,28 @@ print('Array type:', type(data1))
 print('Data type: ',  data1.dtype)
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data1' is not defined
+```{.output}
+[[11 11 11 ...  9 10 10]
+ [12 11 11 ... 10  9 11]
+ [11 11 11 ... 10 11 10]
+ ...
+ [11 11 11 ... 10 10 10]
+ [12 11 11 ...  9 10 10]
+ [11 11 11 ... 10 10 10]]
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
+[[128 150 137 100  53  27  18  14  12  10]
+ [155 177 172 136  73  38  21  15  11  11]
+ [140 146 154 144  96  50  24  15  13  11]
+ [133 144 139 122  95  55  26  15  13  11]
+ [114 117 122 103  78  46  22  14  11  10]
+ [ 79  87  97  78  54  32  18  12  11  12]
+ [ 48  54  53  46  27  20  14  12  10  11]
+ [ 20  22  23  20  15  13  13  11  11  11]
+ [ 17  16  15  14  13  11  11  11  10  12]
+ [ 12  14  14  13  14  12  12  12  11  11]]
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+Array type: <class 'numpy.ndarray'>
+Data type:  uint8
 ```
 
 <p style='text-align: justify;'>
@@ -346,48 +235,11 @@ In microscopy, the flourecent images are labelled with three colours: red, green
 ```python
 # Combine data of two images
 data = np.zeros((data1.shape[0], data1.shape[0], 3)) # 3 two-dimensional arrays; 1 for each channel
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'np' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 data[:,:,0] = data1 # Assigning image 1 as first channel
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 data[:,:,2] = data3 # Assigning image 3 as 3rd/last channel
 
 # Converting numeric data to image
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data3' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 im = Image.fromarray(np.uint8(data)) 
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'Image' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ```
 
 
@@ -405,53 +257,8 @@ axs[2].imshow(im); # Combined image
 axs[2].axis('off')
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+(-0.5, 511.5, 511.5, -0.5)
 ```
 
 ![](fig/img3.png)
@@ -491,67 +298,15 @@ plt.show()
 print(data1.max(), ":", data3.max())
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+(0.0, 40.0)
+(0.0, 40.0)
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
+<img src="fig/01-section1-rendered-unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" />
 
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+255 : 122
 ```
 
 <p style='text-align: justify;'>
@@ -571,49 +326,13 @@ plt.axis('off')
 plt.show()
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'skimage'
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.local/share/renv/cache/v5/R-4.2/x86_64-pc-linux-gnu/reticulate/1.24/ffdf27627a3c1537478073c43b6e7980/reticulate/python/rpytools/loader.py", line 39, in _import_hook
-    module = _import(
+```{.output}
+/home/runner/.virtualenvs/carp-env/lib/python3.10/site-packages/skimage/_shared/utils.py:394: UserWarning: This might be a color image. The histogram will be computed on the flattened image. You can instead apply this function to each color channel, or set channel_axis.
+  return func(*args, **kwargs)
+(-0.5, 511.5, 511.5, -0.5)
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'exposure' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
+<img src="fig/01-section1-rendered-unnamed-chunk-10-3.png" width="672" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::::::::: challenge 
 
@@ -647,53 +366,14 @@ import cv2 # GB - Explanation of package cv2
 #print(cv2._version_)
 
 # Calculate mean and STD
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'cv2'
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.local/share/renv/cache/v5/R-4.2/x86_64-pc-linux-gnu/reticulate/1.24/ffdf27627a3c1537478073c43b6e7980/reticulate/python/rpytools/loader.py", line 39, in _import_hook
-    module = _import(
-```
-
-```python
 mean, STD = cv2.meanStdDev(data1)
 
 # Clip frame to lower and upper STD
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'cv2' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 offset = 1
 offset_nuclei = np.clip(im, mean - STD, mean + STD).astype(np.uint8)
 
 # Normalise to range
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'np' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 result = cv2.normalize(offset_nuclei, np.uint8(data), 0, 255, norm_type=cv2.NORM_MINMAX)
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'cv2' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ```
 
 
@@ -706,33 +386,11 @@ plt.axis('off')
 plt.show()
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+(-0.5, 511.5, 511.5, -0.5)
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
+<img src="fig/01-section1-rendered-unnamed-chunk-12-5.png" width="672" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::::::::: challenge 
 
@@ -759,102 +417,22 @@ Now we can plot histograms of the normalised intensities in channel 1, channel 3
 ```python
 # Plot histograms
 fig, axs = plt.subplots(3, sharex=True, sharey=True)
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 axs[0].hist(result[:,:,0].ravel(), bins=30);
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 axs[0].set_title('Nuclei')
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 axs[1].hist(result[:,:,2].ravel(), bins=30);
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 axs[1].set_title('Cytoplasm')
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 axs[2].hist(result[:,:,2].ravel() - result[:,:,0].ravel(), bins=30);
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 axs[2].set_title('Cytoplasm - Nuclei')
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 fig.tight_layout();
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'fig' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 plt.show()
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
+<img src="fig/01-section1-rendered-unnamed-chunk-13-7.png" width="672" style="display: block; margin: auto;" />
 
 The third histogram shows everything (background signal), except for nuclei and cytoplasm.
 
@@ -901,62 +479,19 @@ It is also possible to analyse a small region of an image. The image can be crop
 ```python
 # Annotating the regions
 from matplotlib.patches import Rectangle
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'matplotlib'
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.local/share/renv/cache/v5/R-4.2/x86_64-pc-linux-gnu/reticulate/1.24/ffdf27627a3c1537478073c43b6e7980/reticulate/python/rpytools/loader.py", line 39, in _import_hook
-    module = _import(
-```
-
-```python
 x, y, w, h = 450, 10, 60, 50
 
 fig, ax = plt.subplots(dpi = 100)
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 plt.imshow(result)
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 ax.add_patch(Rectangle((x,y), w, h, edgecolor="w", fill=False));
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'ax' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 plt.show()
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
+<img src="fig/01-section1-rendered-unnamed-chunk-15-9.png" width="672" style="display: block; margin: auto;" />
 
 
 ```python
@@ -967,33 +502,11 @@ plt.axis('off')
 plt.show()
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+(-0.5, 59.5, 49.5, -0.5)
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
+<img src="fig/01-section1-rendered-unnamed-chunk-16-11.png" width="672" style="display: block; margin: auto;" />
 
 
 ```python
@@ -1001,18 +514,9 @@ result[y:y+h, x:x+w, 0].shape
 result[:,:,0].shape
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'result' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'result' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+(50, 60)
+(512, 512)
 ```
 
 The region in the rectangle does not have any cells. Plotting a histogram for this region versus full image will result in the following plot.
@@ -1037,89 +541,7 @@ plt.legend()
 plt.show()
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs0_2' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs1_2' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'axs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
+<img src="fig/01-section1-rendered-unnamed-chunk-18-13.png" width="672" style="display: block; margin: auto;" />
 
 <p style='text-align: justify;'>
 This plot compares the intensity of the pixels in the total image (blue) to those in the region of interest (ROI) bounded by the rectangle. If we move the ROI over cells, we can see how this intensity changes.
@@ -1172,46 +594,15 @@ Repeat this process for other images (in the folder) and save 3-4 examples of ce
 # Preparing the data for clustering
 
 img1 = result[:,:,0].reshape(-1, 1)
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'result' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 img2 = result[:,:,2].reshape(-1, 1)
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'result' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 all_imgs = np.concatenate([img1, img2], axis=1)
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'np' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 all_imgs.shape
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'all_imgs' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+(262144, 2)
 ```
 
 
@@ -1220,191 +611,57 @@ Detailed traceback:
 from sklearn.mixture import GaussianMixture
 
 # Cluster the images and obtain the labels for each pixel
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'sklearn'
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.local/share/renv/cache/v5/R-4.2/x86_64-pc-linux-gnu/reticulate/1.24/ffdf27627a3c1537478073c43b6e7980/reticulate/python/rpytools/loader.py", line 39, in _import_hook
-    module = _import(
-```
-
-```python
 n_components = 3
 
 RANDOM_STATE = 12345
 
 gmm = GaussianMixture(n_components=n_components, 
                       random_state=RANDOM_STATE)
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'GaussianMixture' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 all_img_labels = gmm.fit_predict(all_imgs)
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'gmm' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 all_img_labels[0]
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'all_img_labels' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+0
 ```
 
 
 ```python
 fig, ax = plt.subplots(figsize=(6, 6))
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 ax.scatter(img1[img1 > 0], img2[img2 > 0], c=all_img_labels, s=50)
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'ax' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 ax.set_xlabel('Image 1', fontsize=16)
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'ax' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 ax.set_ylabel('Image 2', fontsize=16);
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'ax' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 plt.show()
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
+<img src="fig/01-section1-rendered-unnamed-chunk-21-15.png" width="576" style="display: block; margin: auto;" />
 
 
 ```python
 from numpy import zeros
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): ModuleNotFoundError: No module named 'numpy'
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-  File "/home/runner/.local/share/renv/cache/v5/R-4.2/x86_64-pc-linux-gnu/reticulate/1.24/ffdf27627a3c1537478073c43b6e7980/reticulate/python/rpytools/loader.py", line 39, in _import_hook
-    module = _import(
-```
-
-```python
 mask = (data1>0) & (data3>0) 
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 all_img_labels_mapped = zeros(data1.shape)
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'zeros' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 all_img_labels_mapped[mask] = all_img_labels
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'all_img_labels' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
 ```
 
 
 ```python
 fig, ax = plt.subplots(figsize=(6, 6))
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 ax.imshow(all_img_labels_mapped);
-```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'ax' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```python
 plt.show()
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
+<img src="fig/01-section1-rendered-unnamed-chunk-23-17.png" width="576" style="display: block; margin: auto;" />
 
 The result depends critically on the specified number of clusters.
 
@@ -1468,54 +725,11 @@ plt.axis('off')
 plt.show()
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'Image' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
+```{.output}
+(-0.5, 511.5, 511.5, -0.5)
 ```
 
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'np' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'data1' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
-
-```{.error}
-Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'plt' is not defined
-
-Detailed traceback:
-  File "<string>", line 1, in <module>
-```
+<img src="fig/01-section1-rendered-unnamed-chunk-24-19.png" width="672" style="display: block; margin: auto;" />
 
 
 ```
