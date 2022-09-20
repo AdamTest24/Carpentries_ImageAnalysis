@@ -1,5 +1,5 @@
 ---
-title: "Introduction and Data Exploration"
+title: "Microscopic Image Analysis"
 teaching: 10
 exercises: 2
 ---
@@ -164,7 +164,7 @@ im3 = Image.open(ch3_files[0])
 ```
 
 ```{.output}
-data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice6_channel1.tif : data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice1_channel3.tif 
+data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice1_channel1.tif : data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_L15f00d0_slice2_channel3.tif 
 
 Correctly paired .... 
 
