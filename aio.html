@@ -218,6 +218,8 @@
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
+<p><a href="01-section1.ipynb"><strong>Download Chapter notebook (ipynb)</strong></a></p>
+<p><a href="01-section1.md.pdf"><strong>Download Chapter pdf</strong></a></p>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
 <div class="row g-0">
@@ -362,7 +364,7 @@ The <em>Python Imaging Library (PIL)</em> has a large number of modules and subm
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice6_channel1.tif : data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice1_channel3.tif 
+<pre class="output" tabindex="0"><code>data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice1_channel1.tif : data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_L15f00d0_slice2_channel3.tif 
 
 Correctly paired .... 
 
@@ -966,7 +968,8 @@ from sklearn.cluster import KMeans</code></pre>
 </div>
 </div>
 </section><section id="tea-break-1"><h2 class="section-heading">Tea Break</h2>
-<hr class="half-width"></section><figure id="segmentation"><h2 class="section-heading">Segmentation</h2>
+<hr class="half-width"></section><section id="section"><h2 class="section-heading"></h2>
+<hr class="half-width"></section><section id="segmentation"><h2 class="section-heading">Segmentation</h2>
 <hr class="half-width">
 <p>Image segmentation allows us to locate objects and boundaries (lines, curves, <em>etc.</em>) within an image. Conventional methods make use of a threshold value to distinguish between different regions and/or cells. In this lesson, we will use a Python package called <a href="https://github.com/stardist/stardist" class="external-link"><strong>StarDist</strong></a>, which makes use of deep learning methods to perform nuclei segmentation. It is designed particularly for nuclei segmentation. <strong>StarDist</strong> comes with pretrained models, that are likely suitable for your micrograph images. However, it is also possible to train your model specifically for your dataset.</p>
 <div class="codewrapper sourceCode" id="cb40">
@@ -1034,7 +1037,7 @@ axs[1].imshow(nuclei.astype(int))
 axs[1].imshow(labels, cmap=lbl_cmap,alpha=0.5)
 axs[1].axis('off')
 </code></pre>
-<img src="fig/seg1.png" class="figure mx-auto d-block"><p style="text-align: justify;">
+<figure><img src="fig/seg1.png" class="figure mx-auto d-block"></figure><p style="text-align: justify;">
 The image on the right is a segmented image, with correctly identified and predicted nuclei. This image is also referred to as a masked image. The next step will allow us to count the number of nuclei in this image, which is performed as follows:
 </p>
 <pre><code># Enumerate nuclei
@@ -1126,7 +1129,7 @@ print("The total number of nuclei in the image are: ", len(details['points']))
 <p style="text-align: justify;">
 If you have done the above exercise of using <strong>stardist</strong> to perform segmentation for the cytoplasm channel, then you may have noticed pecularities. These can be justified by StarDist really only being designed for accurate segmentation of nuclei. However, if you are interested in cytoplasm segmentation, then using <strong>cellpose</strong> is better suited for this application. This Python package is more specialised, and better apllied to cell and nucleus segmentation. After completing this workshop, you will observe that <strong>stardist</strong> and <strong>cellpose</strong> both work in a similar fashion. For more information and documentation, please follow this <a href="https://github.com/MouseLand/cellpose" class="external-link">link</a>.
 </p>
-</figure><section id="summary-and-conclusions"><h2 class="section-heading">Summary and Conclusions</h2>
+</section><section id="summary-and-conclusions"><h2 class="section-heading">Summary and Conclusions</h2>
 <hr class="half-width">
 <p style="text-align: justify;">
 In undertaking this workshop, we have learned to import, explore and analyse fluorescence microscopy images, and how to perform some basic image analyses using several packages, in Python. We have also learned how to perform clustering analyses, through implementing unsupervised machine learning algorithms (GMM). Further to this, we provided an introduction into the use of deep learning algorithms for use in nuclei segmentation, which can provide a fast, accurate and powerful count of the nuclei present in an image; this can be invaluable for analysing large amounts of data. Following the guided links, you can start to explore more advanced image analysis techniques, and <em>Learn To Discover</em> how these can help you further your own work, and reserach.

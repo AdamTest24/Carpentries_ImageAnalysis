@@ -4,6 +4,10 @@ teaching: 10
 exercises: 2
 ---
 
+[**Download Chapter notebook (ipynb)**](01-section1.ipynb)
+
+[**Download Chapter pdf**](01-section1.md.pdf)
+
 :::::::::::::::::::::::::::::::::::::: questions 
 
 - How to work with the image data?
@@ -127,7 +131,7 @@ im3 = Image.open(ch3_files[0])
 ```
 
 ```{.output}
-data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice6_channel1.tif : data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice1_channel3.tif 
+data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_A24f00d0_slice1_channel1.tif : data/human_ht29_colon_cancer_2_images/AS_09125_050116000001_L15f00d0_slice2_channel3.tif 
 
 Correctly paired .... 
 
@@ -702,11 +706,9 @@ from sklearn.cluster import KMeans
 
 ::::::::::::::::::::::::::::::: 
 
-
 ## Tea Break
-
+## 
 ## Segmentation
-
 Image segmentation allows us to locate objects and boundaries (lines, curves, *etc.*) within an image. Conventional methods make use of a threshold value to distinguish between different regions and/or cells. In this lesson, we will use a Python package called [**StarDist**](https://github.com/stardist/stardist), which makes use of deep learning methods to perform nuclei segmentation. It is designed particularly for nuclei segmentation. **StarDist** comes with pretrained models, that are likely suitable for your micrograph images. However, it is also possible to train your model specifically for your dataset.
 
 
@@ -731,7 +733,6 @@ plt.show()
 
 <img src="fig/01-section1-rendered-unnamed-chunk-24-19.png" width="672" style="display: block; margin: auto;" />
 
-
 ```
 from stardist.models import StarDist2D
 from stardist import random_label_cmap
@@ -744,6 +745,7 @@ img = normalize(nuclei[:,:,0], 1,99.8, axis=axis_norm)
 model = StarDist2D.from_pretrained('2D_versatile_fluo')
 lbl_cmap = random_label_cmap()
 ```
+
 <p style='text-align: justify;'>
 By running this Python code, you will see this message. This suggests that everything is working fine. The package **StarDist** requires the installation of a deep learning package **tensorflow**.
 </p>
@@ -796,6 +798,7 @@ axs[1].axis('off')
 
 ```
 ![](fig/seg1.png)
+
 <p style='text-align: justify;'>
 The image on the right is a segmented image, with correctly identified and predicted nuclei. This image is also referred to as a masked image. The next step will allow us to count the number of nuclei in this image, which is performed as follows:
 </p>
@@ -861,10 +864,6 @@ Repeat segmentation for cytoplasm channel, what do you notice? Explain your obse
 :::::::::::::::::
 
 :::::::::::::::::::::::::::::::
-
-	
-
-	
 
 <p style='text-align: justify;'>
 If you have done the above exercise of using **stardist** to perform segmentation for the cytoplasm channel, then you may have noticed pecularities. These can be justified by StarDist really only being designed for accurate segmentation of nuclei. However, if you are interested in cytoplasm segmentation, then using **cellpose** is better suited for this application. This Python package is more specialised, and better apllied to cell and nucleus segmentation. After completing this workshop, you will observe that **stardist** and **cellpose** both work in a similar fashion. For more information and documentation, please follow this [link](https://github.com/MouseLand/cellpose).
