@@ -82,6 +82,7 @@ After running these 2 commands, you will be able to select your virtual environm
 
 ## Dataset
 Dataset for this lesson includes:
+
 - [human_ht29_colon_cancer_2_images](data/human_ht29_colon_cancer_2_images.zip)
 
 - A [blank jupyter notebook](files/practice_exercises.ipynb) to start working.
