@@ -214,7 +214,7 @@
         
 <section id="aio-01-section1"><p>Content from <a href="01-section1.html">Microscopic Image Analysis</a></p>
 <hr>
-<p> Last updated on 2022-09-20 | <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/01-section1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-09-21 | <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/01-section1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -228,8 +228,8 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>How to work with the image data?</li>
-<li>What are different ways to explore and visualise the image data?</li>
+<li>How to work with image data?</li>
+<li>What are different ways to explore and visualise image data?</li>
 <li>How is image clustering performed?</li>
 <li>How can we perform nuclei segmentation?</li>
 </ul>
@@ -242,12 +242,11 @@
 <h3 class="card-title">Objectives</h3>
 <ul>
 <li>Basic image handling: reading in image files, and how to convert them into numerical arrays.</li>
-<li>Measurement of pixel intensity, ploting these data as histograms, and learning how to equalise these intensity values across an image.</li>
-<li>OpenCV to normalise pixel intensity values of one channel relative to another, to normalise an image.</li>
-<li>Constructing scatter plots to observe correlations between the pixel intensities of each channel.</li>
-<li>Clustering multiple data points, helping to clearly identify distinct distributions.</li>
-<li>Selecting and zoning in on specific parts of an image, for analyses.</li>
-<li>Implementation of image clustering.</li>
+<li>Measurement of pixel intensity, plotting these data as histograms, and learning how to equalise these intensity values across an image.</li>
+<li>OpenCV to normalise pixel intensities of an image.</li>
+<li>Constructing and interpreting scatter plots of pixel intensities.</li>
+<li>Selecting and zooming in on specific parts of an image, for analyses.</li>
+<li>Clustering of images to identify and isolate objects.</li>
 <li>Counting nuclei <em>via</em> image segmentation, targeting cell nuclei using StarDist.</li>
 </ul>
 </div>
@@ -262,11 +261,11 @@
 <div id="why-is-image-analysis-important" class="callout-inner">
 <h3 class="callout-title"><strong>Why is Image Analysis important?</strong></h3>
 <div class="callout-content">
-<p>Image Analysis extracts meaningful data, and can be useful in many different applications. Such as:</p>
+<p>Image Analysis extracts meaningful data and can be useful in many different applications. Such as:</p>
 <ol style="list-style-type: decimal">
-<li><p>Analysing fluorescent digital slides, which can help quantitate the area of staining of a particular biomarker.</p></li>
-<li><p>Image analysis tools can help to automate repetitive processes, and provide quantitative data that is accurate and repeatable, telling you about each slide: beyond the capabilities of manual microscopy.</p></li>
-<li><p>Image analyses performed on fluorscent micrographs can help answer questions such as:</p></li>
+<li><p>Analysing fluorescent digital slides, which can help to quantify the area of staining of a particular biomarker.</p></li>
+<li><p>Image analysis tools can help to automate repetitive processes, and provide quantitative data that is accurate and reproducible: beyond the capabilities of manual microscopy.</p></li>
+<li><p>Image analyses performed on fluorescent micrographs can help answer questions such as:</p></li>
 </ol>
 <ul>
 <li><p>How much area of a tissue sample is stained for a particular biomarker?</p></li>
@@ -296,7 +295,7 @@ In this tutorial, we will learn how to load, manipulate and extract quantitative
 <strong>Images in dataset</strong><a class="anchor" aria-label="anchor" href="#images-in-dataset"></a>
 </h3>
 <p style="text-align: justify;">
-The image set consists of 12 individual images. The samples were stained with Hoechst (channel 1), pH3 (channel 2), and phalloidin (channel 3). Hoechst labels DNA, which is present in the nucleus. Phalloidin labels actin, which is present in the cytoplasm. The last stain - pH3 - is used to indicate cells in mitosis, and is irrelevant for segmentation and counting, so this channel will be ommitted. In this tutorial we will be exploring channel 1 for nuclei, and channel 3 for the cytoplasm.
+The image set consists of 12 individual images. The samples were stained with Hoechst (channel 1), pH3 (channel 2), and phalloidin (channel 3). Hoechst labels DNA, which is present in the nucleus. Phalloidin labels actin, which is present in the cytoplasm. The last stain - pH3 - is used to indicate cells in mitosis, and is irrelevant for segmentation and counting, so this channel will be omitted. In this tutorial we will be exploring channel 1 for nuclei, and channel 3 for the cytoplasm.
 </p>
 </div>
 <div class="section level3">
@@ -307,7 +306,7 @@ The image set consists of 12 individual images. The samples were stained with Ho
 There are several image processing libraries available in Python, such as <em>Python Imaging Library</em>, <em>Sci-kit Image</em>, <em>Scipy.ndimage</em> and <em>Open CV</em>. While each have their own features, they all have the same (or at least very similar) utilities. In this lesson, we will be using the <em>Python Imaging Library</em> and <em>Sci-kit Image</em>, as these have everything we require, packaged together in easy-to-use functions.
 </p>
 <p style="text-align: justify;">
-The <em>Python Imaging Library (PIL)</em> has a large number of modules and submodules. Each submodule has an array of functions assoicated with a certain type of operation. For example, we will be using module <strong>Image</strong> which provides a number of factory functions, including functions to load images from files, and to create new images.
+The <em>Python Imaging Library (PIL)</em> has a large number of modules and submodules. Each submodule has an array of functions associated with a certain type of operation. For example, we will be using module <strong>Image</strong> which provides a number of factory functions, including functions to load images from files, and to create new images.
 </p>
 <p>For other basic processing and plotting in Python, the scientific packages Numpy and Matplotlib are needed.</p>
 <p>In a blank Jupyter Notebook, open a new cell, and write your own Python code to import the following packages and modules:</p>
@@ -464,7 +463,7 @@ Data type:  uint8</code></pre>
 The type function has returned numpy.ndarray where nd stands for n-dimensional, as Numpy can handle data of any dimension. The above output only shows us a fraction of the image, with the <code>...</code> indicating non-displayed values. We can also observe <code>dtype</code>, which tells us the type of the pixels within the array. The variable data1 is an array, but its content can vary: we could have floating point values, integers <em>etc</em>. Here, uint8 tells us we have unsigned (no negative values) integers in 8 bit, <em>i.e.</em> up to <span class="math inline">\(2^8\)</span> different possible pixel values.
 </p>
 <p style="text-align: justify;">
-In microscopy, the flourecent images are labelled with three colours: red, green and blue (RGB). An RGB image is simply a stack of three two-dimensional arrays. The image in the first dimension will have a red colour map, the second a green colour map, and the third a blue colour map. In this dataset, channel 1 (nuclei) is labelled red, and channel 3 (cytoplasm) is labelled blue; channel 2 is empty. We will now combine the data of these two images into a single array, and into a single image.
+In microscopy, the fluorescent images are labelled with three colours: red, green and blue (RGB). An RGB image is simply a stack of three two-dimensional arrays. The image in the first dimension will have a red colour map, the second a green colour map, and the third a blue colour map. In this dataset, channel 1 (nuclei) is labelled red, and channel 3 (cytoplasm) is labelled blue; channel 2 is empty. We will now combine the data of these two images into a single array, and into a single image.
 </p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -577,7 +576,7 @@ The histograms show that there is a very high intensity of fluorescence for nucl
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 
 </div>
@@ -592,48 +591,64 @@ The histograms show that there is a very high intensity of fluorescence for nucl
 To demonstrate the vast functionality available in Python, we will take a look at <strong>OpenCV</strong>. OpenCV (Open Source Computer Vision Library: <a href="http://opencv.org" class="external-link uri">http://opencv.org</a>); an open-source library that includes several hundred computer vision algorithms.
 </p>
 <p style="text-align: justify;">
-For example, we can use functions to normalise our image data. Mathematical normalisation can be performed on images individually, or with respect to another channel. In the following example, we will normalise channel 3, with respect to channel 1. To do so, we calculate the mean and standard deviation of the pixel intensity of channel 1, and remove them from channel 3.
+As an example, we can use functions to flexibly rescale our image data. This helps to enhance visibility of features that are limited to a narrow range of intensities. Mathematical normalisation can be performed on whole images, or with respect to a single channel. In the following example, we normalise the whole image with respect to channel 1. To do so, we calculate the mean and standard deviation of the pixel intensities of channel 1, clip the image to plus / minus the values obtained (which preserves most of the intensities) and then rescale the result to values between 0 and 255 for full image resolution.
 </p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalise to a different channel</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2 <span class="co"># GB - Explanation of package cv2</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#print(cv2._version_)</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean and STD</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>mean, STD <span class="op">=</span> cv2.meanStdDev(data1)</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Clip frame to lower and upper STD</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>offset_nuclei <span class="op">=</span> np.clip(im, mean <span class="op">-</span> STD, mean <span class="op">+</span> STD).astype(np.uint8)</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalise to range</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> cv2.normalize(offset_nuclei, np.uint8(data), <span class="dv">0</span>, <span class="dv">255</span>, norm_type<span class="op">=</span>cv2.NORM_MINMAX)</span></code></pre>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean and STD of nuclei image, channel 1</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>mean, STD <span class="op">=</span> cv2.meanStdDev(data1)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Clip frame to lower and upper STD</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>data_clipped <span class="op">=</span> np.clip(data, mean <span class="op">-</span> STD, mean <span class="op">+</span> STD).astype(np.uint8)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalise to range</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>data_clipped_normalised <span class="op">=</span> cv2.normalize(data_clipped, <span class="va">None</span>, alpha<span class="op">=</span><span class="dv">0</span>, beta<span class="op">=</span><span class="dv">255</span>, norm_type<span class="op">=</span>cv2.NORM_MINMAX)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the results of normalisation</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> data_clipped_normalised</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot normalised image</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plt.figure(dpi<span class="op">=</span><span class="dv">200</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(result)<span class="op">;</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].boxplot(data[:,:,<span class="dv">0</span>].ravel())<span class="op">;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'Original Intensities'</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].boxplot(data_clipped[:,:,<span class="dv">0</span>].ravel())<span class="op">;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'Clipped Intensities'</span>)<span class="op">;</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">#fig.savefig('clipped.png')</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<figure><img src="fig/01-section1-rendered-unnamed-chunk-12-5.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb23">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>(-0.5, 511.5, 511.5, -0.5)</code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot normalised image</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">6</span>), dpi<span class="op">=</span><span class="dv">200</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].imshow(im)<span class="op">;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xticks((<span class="dv">0</span>, data.shape[<span class="dv">0</span>]))<span class="op">;</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_yticks([])<span class="op">;</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'Original'</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].imshow(result)<span class="op">;</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xticks((<span class="dv">0</span>, data.shape[<span class="dv">0</span>]))<span class="op">;</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_yticks([])<span class="op">;</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'with normalisation'</span>)<span class="op">;</span></span></code></pre>
 </div>
-<figure><img src="fig/01-section1-rendered-unnamed-chunk-12-5.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="challenge2" class="callout challenge">
+<figure><img src="fig/norm.png" class="figure mx-auto d-block"></figure><div id="challenge2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="do-it-yourself---exercise-2" class="callout-inner">
 <h3 class="callout-title">Do it Yourself - Exercise 2</h3>
 <div class="callout-content">
-<p>Normalise the combined image with respect to cytoplasm?</p>
+<p>Normalise the combined image with respect to cytoplasm.</p>
 </div>
 </div>
 </div>
@@ -644,7 +659,7 @@ For example, we can use functions to normalise our image data. Mathematical norm
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 
 </div>
@@ -675,7 +690,7 @@ For example, we can use functions to normalise our image data. Mathematical norm
 <span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
-<figure><img src="fig/01-section1-rendered-unnamed-chunk-13-7.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The third histogram shows everything (background signal), except for nuclei and cytoplasm.</p>
+<figure><img src="fig/01-section1-rendered-unnamed-chunk-14-7.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The third histogram shows everything (background signal), except for nuclei and cytoplasm.</p>
 <p>To investigate correlations between the intensities, we can look at a scatter plot (below left, once you run the cell, below). This type of plot is generally useful for exploratory data analysis.</p>
 <p style="text-align: justify;">
 We can see that the scatter plot is quite dense, and it is not really possible to see how many points are present, at a given location. We can display this information with the two-dimensional histogram (below centre). This clearly shows the count of points that fall into a certain square of intensities. (Note the thin, yellow area towards the right margin).
@@ -701,7 +716,7 @@ From a python plotting library called <a href="https://seaborn.pydata.org" class
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#```{python}</span></span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">6</span>))</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot</span></span>
@@ -712,11 +727,12 @@ From a python plotting library called <a href="https://seaborn.pydata.org" class
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> kdeplot</span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a> <span class="co"># Density Plot</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Density Plot</span></span>
 <span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>kdeplot(x<span class="op">=</span>result[:,:,<span class="dv">0</span>].flatten(), y<span class="op">=</span>result[:,:,<span class="dv">2</span>].flatten(), ax<span class="op">=</span>ax[<span class="dv">2</span>])<span class="op">;</span></span>
 <span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
+<figure><img src="fig/01-section1-rendered-unnamed-chunk-15-9.png" width="1920" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure>
 </div>
 </section><section id="selecting-part-of-an-image"><h2 class="section-heading">Selecting part of an image</h2>
 <hr class="half-width">
@@ -737,7 +753,7 @@ From a python plotting library called <a href="https://seaborn.pydata.org" class
 <span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
-<figure><img src="fig/01-section1-rendered-unnamed-chunk-15-9.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb27">
+<figure><img src="fig/01-section1-rendered-unnamed-chunk-16-11.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot what's in box</span></span>
@@ -751,7 +767,7 @@ From a python plotting library called <a href="https://seaborn.pydata.org" class
 </h3>
 <pre class="output" tabindex="0"><code>(-0.5, 59.5, 49.5, -0.5)</code></pre>
 </div>
-<figure><img src="fig/01-section1-rendered-unnamed-chunk-16-11.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb29">
+<figure><img src="fig/01-section1-rendered-unnamed-chunk-17-13.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>result[y:y<span class="op">+</span>h, x:x<span class="op">+</span>w, <span class="dv">0</span>].shape</span>
@@ -784,7 +800,7 @@ From a python plotting library called <a href="https://seaborn.pydata.org" class
 <span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
-<figure><img src="fig/01-section1-rendered-unnamed-chunk-18-13.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p style="text-align: justify;">
+<figure><img src="fig/01-section1-rendered-unnamed-chunk-19-15.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p style="text-align: justify;">
 This plot compares the intensity of the pixels in the total image (blue) to those in the region of interest (ROI) bounded by the rectangle. If we move the ROI over cells, we can see how this intensity changes.
 </p>
 <div id="challenge3" class="callout challenge">
@@ -794,7 +810,7 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
 <div id="do-it-yourself---exercise-3" class="callout-inner">
 <h3 class="callout-title">Do it Yourself - Exercise 3</h3>
 <div class="callout-content">
-<p>Move the rectangle towards left so that it have a few cells. Now plot the histogram again and see the differences.</p>
+<p>Move the rectangle towards left so that it contains a few cells. Now plot the histogram again and see the differences.</p>
 </div>
 </div>
 </div>
@@ -805,7 +821,7 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 
 </div>
@@ -830,7 +846,7 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 
 </div>
@@ -893,7 +909,7 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
-<figure><img src="fig/01-section1-rendered-unnamed-chunk-21-15.png" width="576" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb37">
+<figure><img src="fig/01-section1-rendered-unnamed-chunk-22-17.png" width="576" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> zeros</span>
@@ -913,7 +929,7 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
-<figure><img src="fig/01-section1-rendered-unnamed-chunk-23-17.png" width="576" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The result depends critically on the specified number of clusters.</p>
+<figure><img src="fig/01-section1-rendered-unnamed-chunk-24-19.png" width="576" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The result depends critically on the specified number of clusters.</p>
 <div id="challenge5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -932,7 +948,7 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 
 </div>
@@ -948,8 +964,7 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
 <div class="callout-content">
 <p>Apply the Kmeans algorithm to the images and compare the result of the clustering for different choices of n_components.</p>
 <p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html" class="external-link">Documentation</a># To import:</p>
-<pre><code># To import:
-from sklearn.cluster import KMeans</code></pre>
+<pre><code>from sklearn.cluster import KMeans</code></pre>
 </div>
 </div>
 </div>
@@ -960,7 +975,7 @@ from sklearn.cluster import KMeans</code></pre>
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 
 </div>
@@ -993,7 +1008,7 @@ from sklearn.cluster import KMeans</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>(-0.5, 511.5, 511.5, -0.5)</code></pre>
 </div>
-<figure><img src="fig/01-section1-rendered-unnamed-chunk-24-19.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><pre><code>from stardist.models import StarDist2D
+<figure><img src="fig/01-section1-rendered-unnamed-chunk-25-21.png" width="672" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><pre><code>from stardist.models import StarDist2D
 from stardist import random_label_cmap
 
 from csbdeep.utils import Path, normalize
@@ -1014,7 +1029,7 @@ Using default values: prob_thresh=0.479071, nms_thresh=0.3.</code></pre>
 <p style="text-align: justify;">
 In order to access pretrained models, the function <em>StarDist2D.from_pretrained()</em> provides a list from which a suitable model can be selected. There are two main types of models: one for fluorescent images, and the other for brightfield images. For our image, <strong>StarDist</strong> will perform nuclei prediction using <em>2D_versatile_fluo</em>.
 </p>
-<p>The availbilty of pretrained models can be checked as follows:</p>
+<p>The availability of pretrained models can be checked as follows:</p>
 <pre><code><span><span class="fu">StarDist2D.from_pretrained</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <p><strong>Output</strong></p>
 <pre><code>There are 4 registered models for 'StarDist2D':
@@ -1069,7 +1084,7 @@ print("The total number of nuclei in the image are: ", len(details['points']))
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 
 </div>
@@ -1094,7 +1109,7 @@ print("The total number of nuclei in the image are: ", len(details['points']))
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 
 </div>
@@ -1119,7 +1134,7 @@ print("The total number of nuclei in the image are: ", len(details['points']))
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 
 </div>
@@ -1127,7 +1142,7 @@ print("The total number of nuclei in the image are: ", len(details['points']))
 </div>
 </div>
 <p style="text-align: justify;">
-If you have done the above exercise of using <strong>stardist</strong> to perform segmentation for the cytoplasm channel, then you may have noticed pecularities. These can be justified by StarDist really only being designed for accurate segmentation of nuclei. However, if you are interested in cytoplasm segmentation, then using <strong>cellpose</strong> is better suited for this application. This Python package is more specialised, and better apllied to cell and nucleus segmentation. After completing this workshop, you will observe that <strong>stardist</strong> and <strong>cellpose</strong> both work in a similar fashion. For more information and documentation, please follow this <a href="https://github.com/MouseLand/cellpose" class="external-link">link</a>.
+If you have done the above exercise of using <strong>stardist</strong> to perform segmentation for the cytoplasm channel, then you may have noticed some peculiarities. These can be justified by StarDist being designed for accurate segmentation of nuclei. However, if you are interested in cytoplasm segmentation, then using <strong>cellpose</strong> is better suited for this application. This Python package is more specialised, and better applied to cell and nucleus segmentation. After completing this workshop, you will observe that <strong>stardist</strong> and <strong>cellpose</strong> both work in a similar fashion. For more information and documentation, please follow this <a href="https://github.com/MouseLand/cellpose" class="external-link">link</a>.
 </p>
 </section><section id="summary-and-conclusions"><h2 class="section-heading">Summary and Conclusions</h2>
 <hr class="half-width">
@@ -1202,9 +1217,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-md/aio.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/aio.html",
-  "dateCreated": "2022-09-20",
-  "dateModified": "2022-09-20",
-  "datePublished": "2022-09-20"
+  "dateCreated": "2022-09-21",
+  "dateModified": "2022-09-21",
+  "datePublished": "2022-09-21"
 }
 
   </script><script>
