@@ -10,8 +10,8 @@ exercises: 2
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How to work with the image data?
-- What are different ways to explore and visualise the image data?
+- How to work with image data?
+- What are different ways to explore and visualise image data?
 - How is image clustering performed?
 - How can we perform nuclei segmentation?
 
@@ -20,12 +20,11 @@ exercises: 2
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Basic image handling: reading in image files, and how to convert them into numerical arrays.
-- Measurement of pixel intensity, ploting these data as histograms, and learning how to equalise these intensity values across an image.
-- OpenCV to normalise pixel intensity values of one channel relative to another, to normalise an image.
-- Constructing scatter plots to observe correlations between the pixel intensities of each channel.
-- Clustering multiple data points, helping to clearly identify distinct distributions.
-- Selecting and zoning in on specific parts of an image, for analyses.
-- Implementation of image clustering.
+- Measurement of pixel intensity, plotting these data as histograms, and learning how to equalise these intensity values across an image.
+- OpenCV to normalise pixel intensities of an image.
+- Constructing and interpreting scatter plots of pixel intensities.
+- Selecting and zooming in on specific parts of an image, for analyses.
+- Clustering of images to identify and isolate objects.
 - Counting nuclei *via* image segmentation, targeting cell nuclei using StarDist.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -34,13 +33,13 @@ exercises: 2
 
 ::::::::::::::::::::::::::: discussion
 ## **Why is Image Analysis important?**
-Image Analysis extracts meaningful data, and can be useful in many different applications. Such as:
+Image Analysis extracts meaningful data and can be useful in many different applications. Such as:
 
-1. Analysing fluorescent digital slides, which can help quantitate the area of staining of a particular biomarker.
+1. Analysing fluorescent digital slides, which can help to quantify the area of staining of a particular biomarker.
 
-2. Image analysis tools can help to automate repetitive processes, and provide quantitative data that is accurate and repeatable, telling you about each slide: beyond the capabilities of manual microscopy.
+2. Image analysis tools can help to automate repetitive processes, and provide quantitative data that is accurate and reproducible: beyond the capabilities of manual microscopy.
 
-3. Image analyses performed on fluorscent micrographs can help answer questions such as: 
+3. Image analyses performed on fluorescent micrographs can help answer questions such as: 
 
   - How much area of a tissue sample is stained for a particular biomarker? 
 
@@ -65,7 +64,7 @@ In this tutorial, we will learn how to load, manipulate and extract quantitative
 
 ### **Images in dataset**
 <p style='text-align: justify;'>
-The image set consists of 12 individual images. The samples were stained with Hoechst (channel 1), pH3 (channel 2), and phalloidin (channel 3). Hoechst labels DNA, which is present in the nucleus. Phalloidin labels actin, which is present in the cytoplasm. The last stain - pH3 - is used to indicate cells in mitosis, and is irrelevant for segmentation and counting, so this channel will be ommitted. In this tutorial we will be exploring channel 1 for nuclei, and channel 3 for the cytoplasm.
+The image set consists of 12 individual images. The samples were stained with Hoechst (channel 1), pH3 (channel 2), and phalloidin (channel 3). Hoechst labels DNA, which is present in the nucleus. Phalloidin labels actin, which is present in the cytoplasm. The last stain - pH3 - is used to indicate cells in mitosis, and is irrelevant for segmentation and counting, so this channel will be omitted. In this tutorial we will be exploring channel 1 for nuclei, and channel 3 for the cytoplasm.
 </p>
 
 ### **Packages**
@@ -73,7 +72,7 @@ The image set consists of 12 individual images. The samples were stained with Ho
 There are several image processing libraries available in Python, such as *Python Imaging Library*, *Sci-kit Image*, *Scipy.ndimage* and *Open CV*. While each have their own features, they all have the same (or at least very similar) utilities. In this lesson, we will be using the *Python Imaging Library* and *Sci-kit Image*, as these have everything we require, packaged together in easy-to-use functions.
 </p>
 <p style='text-align: justify;'>
-The *Python Imaging Library (PIL)* has a large number of modules and submodules. Each submodule has an array of functions assoicated with a certain type of operation. For example, we will be using module **Image** which provides a number of factory functions, including functions to load images from files, and to create new images.
+The *Python Imaging Library (PIL)* has a large number of modules and submodules. Each submodule has an array of functions associated with a certain type of operation. For example, we will be using module **Image** which provides a number of factory functions, including functions to load images from files, and to create new images.
 </p>
 For other basic processing and plotting in Python, the scientific packages Numpy and Matplotlib are needed.
 
@@ -232,7 +231,7 @@ Data type:  uint8
 The type function has returned numpy.ndarray where nd stands for n-dimensional, as Numpy can handle data of any dimension. The above output only shows us a fraction of the image, with the ```...``` indicating non-displayed values. We can also observe `dtype`, which tells us the type of the pixels within the array. The variable data1 is an array, but its content can vary: we could have floating point values, integers *etc*. Here, uint8 tells us we have unsigned (no negative values) integers in 8 bit, *i.e.* up to $2^8$ different possible pixel values.
 </p>
 <p style='text-align: justify;'>
-In microscopy, the flourecent images are labelled with three colours: red, green and blue (RGB). An RGB image is simply a stack of three two-dimensional arrays. The image in the first dimension will have a red colour map, the second a green colour map, and the third a blue colour map. In this dataset, channel 1 (nuclei) is labelled red, and channel 3 (cytoplasm) is labelled blue; channel 2 is empty. We will now combine the data of these two images into a single array, and into a single image.
+In microscopy, the fluorescent images are labelled with three colours: red, green and blue (RGB). An RGB image is simply a stack of three two-dimensional arrays. The image in the first dimension will have a red colour map, the second a green colour map, and the third a blue colour map. In this dataset, channel 1 (nuclei) is labelled red, and channel 3 (cytoplasm) is labelled blue; channel 2 is empty. We will now combine the data of these two images into a single array, and into a single image.
 </p>
 
 
@@ -359,48 +358,67 @@ Plot a histogram for equalised image, and show intensities of nuclei and cytopla
 To demonstrate the vast functionality available in Python, we will take a look at __OpenCV__. OpenCV (Open Source Computer Vision Library: http://opencv.org); an open-source library that includes several hundred computer vision algorithms.
 </p>
 <p style='text-align: justify;'>
-For example, we can use functions to normalise our image data. Mathematical normalisation can be performed on images individually, or with respect to another channel. In the following example, we will normalise channel 3, with respect to channel 1. To do so, we calculate the mean and standard deviation of the pixel intensity of channel 1, and remove them from channel 3.
+As an example, we can use functions to flexibly rescale our image data. This helps to enhance visibility of features that are limited to a narrow range of intensities. Mathematical normalisation can be performed on whole images, or with respect to a single channel. In the following example, we normalise the whole image with respect to channel 1. To do so, we calculate the mean and standard deviation of the pixel intensities of channel 1, clip the image to plus / minus the values obtained (which preserves most of the intensities) and then rescale the result to values between 0 and 255 for full image resolution.
 </p>
+
 
 
 ```python
 # Normalise to a different channel
 
-import cv2 # GB - Explanation of package cv2
-#print(cv2._version_)
+import cv2
 
-# Calculate mean and STD
+# Calculate mean and STD of nuclei image, channel 1
 mean, STD = cv2.meanStdDev(data1)
 
 # Clip frame to lower and upper STD
-offset = 1
-offset_nuclei = np.clip(im, mean - STD, mean + STD).astype(np.uint8)
+data_clipped = np.clip(data, mean - STD, mean + STD).astype(np.uint8)
 
 # Normalise to range
-result = cv2.normalize(offset_nuclei, np.uint8(data), 0, 255, norm_type=cv2.NORM_MINMAX)
+data_clipped_normalised = cv2.normalize(data_clipped, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX)
+
+# Rename the results of normalisation
+result = data_clipped_normalised
 ```
 
+
+```python
+fig, ax = plt.subplots(ncols=2)
+
+ax[0].boxplot(data[:,:,0].ravel());
+ax[0].set_xlabel('Original Intensities')
+ax[1].boxplot(data_clipped[:,:,0].ravel());
+ax[1].set_xlabel('Clipped Intensities');
+
+plt.show()
+#fig.savefig('clipped.png')
+```
+
+<img src="fig/01-section1-rendered-unnamed-chunk-12-5.png" width="672" style="display: block; margin: auto;" />
 
 
 ```python
 # Plot normalised image
-plt.figure(dpi=200)
-plt.imshow(result);
-plt.axis('off')
-plt.show()
+fig, ax = plt.subplots(ncols=2, figsize=(6,6), dpi=200)
+
+ax[0].imshow(im);
+ax[0].set_xticks((0, data.shape[0]));
+ax[0].set_yticks([]);
+ax[0].set_xlabel('Original')
+
+ax[1].imshow(result);
+ax[1].set_xticks((0, data.shape[0]));
+ax[1].set_yticks([]);
+ax[1].set_xlabel('with normalisation');
 ```
 
-```{.output}
-(-0.5, 511.5, 511.5, -0.5)
-```
-
-<img src="fig/01-section1-rendered-unnamed-chunk-12-5.png" width="672" style="display: block; margin: auto;" />
+![](fig/norm.png)
 
 ::::::::::::::::::::::::::::::: challenge 
 
 ## Do it Yourself - Exercise 2
 
-Normalise the combined image with respect to cytoplasm?
+Normalise the combined image with respect to cytoplasm.
 	
 ::::::::::::::::: solution
 	
@@ -436,7 +454,7 @@ fig.tight_layout();
 plt.show()
 ```
 
-<img src="fig/01-section1-rendered-unnamed-chunk-13-7.png" width="672" style="display: block; margin: auto;" />
+<img src="fig/01-section1-rendered-unnamed-chunk-14-7.png" width="672" style="display: block; margin: auto;" />
 
 The third histogram shows everything (background signal), except for nuclei and cytoplasm.
 
@@ -458,7 +476,7 @@ This plot might take a bit longer to run, as there are a large number of data po
 
 
 ```python
-#```{python}
+
 fig, ax = plt.subplots(1, 3, figsize=(20, 6))
 
 # Scatter plot
@@ -469,11 +487,13 @@ ax[1].hist2d(result[:,:,0].flatten(), result[:,:,2].flatten(), bins=50, vmax=50)
 
 from seaborn import kdeplot
 
- # Density Plot
+# Density Plot
 kdeplot(x=result[:,:,0].flatten(), y=result[:,:,2].flatten(), ax=ax[2]);
 
 plt.show()
 ```
+
+<img src="fig/01-section1-rendered-unnamed-chunk-15-9.png" width="1920" style="display: block; margin: auto;" />
 
 ## Selecting part of an image
 
@@ -495,7 +515,7 @@ ax.add_patch(Rectangle((x,y), w, h, edgecolor="w", fill=False));
 plt.show()
 ```
 
-<img src="fig/01-section1-rendered-unnamed-chunk-15-9.png" width="672" style="display: block; margin: auto;" />
+<img src="fig/01-section1-rendered-unnamed-chunk-16-11.png" width="672" style="display: block; margin: auto;" />
 
 
 ```python
@@ -510,7 +530,7 @@ plt.show()
 (-0.5, 59.5, 49.5, -0.5)
 ```
 
-<img src="fig/01-section1-rendered-unnamed-chunk-16-11.png" width="672" style="display: block; margin: auto;" />
+<img src="fig/01-section1-rendered-unnamed-chunk-17-13.png" width="672" style="display: block; margin: auto;" />
 
 
 ```python
@@ -545,7 +565,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src="fig/01-section1-rendered-unnamed-chunk-18-13.png" width="672" style="display: block; margin: auto;" />
+<img src="fig/01-section1-rendered-unnamed-chunk-19-15.png" width="672" style="display: block; margin: auto;" />
 
 <p style='text-align: justify;'>
 This plot compares the intensity of the pixels in the total image (blue) to those in the region of interest (ROI) bounded by the rectangle. If we move the ROI over cells, we can see how this intensity changes.
@@ -555,7 +575,7 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
 
 ## Do it Yourself - Exercise 3
 
-Move the rectangle towards left so that it have a few cells. Now plot the histogram again and see the differences.
+Move the rectangle towards left so that it contains a few cells. Now plot the histogram again and see the differences.
 	
 ::::::::::::::::: solution
 	
@@ -643,7 +663,7 @@ ax.set_ylabel('Image 2', fontsize=16);
 plt.show()
 ```
 
-<img src="fig/01-section1-rendered-unnamed-chunk-21-15.png" width="576" style="display: block; margin: auto;" />
+<img src="fig/01-section1-rendered-unnamed-chunk-22-17.png" width="576" style="display: block; margin: auto;" />
 
 
 ```python
@@ -665,7 +685,7 @@ ax.imshow(all_img_labels_mapped);
 plt.show()
 ```
 
-<img src="fig/01-section1-rendered-unnamed-chunk-23-17.png" width="576" style="display: block; margin: auto;" />
+<img src="fig/01-section1-rendered-unnamed-chunk-24-19.png" width="576" style="display: block; margin: auto;" />
 
 The result depends critically on the specified number of clusters.
 
@@ -693,7 +713,6 @@ Apply the Kmeans algorithm to the images and compare the result of the clusterin
 [Documentation](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)# To import:
 
 ```
-# To import:
 from sklearn.cluster import KMeans
 ```
 
@@ -731,7 +750,7 @@ plt.show()
 (-0.5, 511.5, 511.5, -0.5)
 ```
 
-<img src="fig/01-section1-rendered-unnamed-chunk-24-19.png" width="672" style="display: block; margin: auto;" />
+<img src="fig/01-section1-rendered-unnamed-chunk-25-21.png" width="672" style="display: block; margin: auto;" />
 
 ```
 from stardist.models import StarDist2D
@@ -762,7 +781,7 @@ Using default values: prob_thresh=0.479071, nms_thresh=0.3.
 In order to access pretrained models, the function *StarDist2D.from_pretrained()* provides a list from which a suitable model can be selected. There are two main types of models: one for fluorescent images, and the other for brightfield images. For our image, **StarDist** will perform nuclei prediction using *2D_versatile_fluo*.
 </p>
 
-The availbilty of pretrained models can be checked as follows:
+The availability of pretrained models can be checked as follows:
 
 ```
 StarDist2D.from_pretrained()
@@ -866,7 +885,7 @@ Repeat segmentation for cytoplasm channel, what do you notice? Explain your obse
 :::::::::::::::::::::::::::::::
 
 <p style='text-align: justify;'>
-If you have done the above exercise of using **stardist** to perform segmentation for the cytoplasm channel, then you may have noticed pecularities. These can be justified by StarDist really only being designed for accurate segmentation of nuclei. However, if you are interested in cytoplasm segmentation, then using **cellpose** is better suited for this application. This Python package is more specialised, and better apllied to cell and nucleus segmentation. After completing this workshop, you will observe that **stardist** and **cellpose** both work in a similar fashion. For more information and documentation, please follow this [link](https://github.com/MouseLand/cellpose).
+If you have done the above exercise of using **stardist** to perform segmentation for the cytoplasm channel, then you may have noticed some peculiarities. These can be justified by StarDist being designed for accurate segmentation of nuclei. However, if you are interested in cytoplasm segmentation, then using **cellpose** is better suited for this application. This Python package is more specialised, and better applied to cell and nucleus segmentation. After completing this workshop, you will observe that **stardist** and **cellpose** both work in a similar fashion. For more information and documentation, please follow this [link](https://github.com/MouseLand/cellpose).
 </p>
 
 ## Summary and Conclusions
