@@ -218,13 +218,13 @@ any links that you are not going to use.
 In Python, the use of virtual environments allows you to avoid installing Python packages globally, which could disrupt system tools, or other projects. Each virtual environment has its own Python binary (which matches the version of the binary that was used to create this environment), and can have its own independent set of installed Python packages within its site directories.
 </p>
 <ol style="list-style-type: decimal"><li>A virtual environment can be created by executing the following command in your Terminal (Mac OS and Unix), or on the command line prompt (Windows):</li>
-</ol><pre><code>conda create --prefix ./envL2D python=3.9 pip</code></pre>
+</ol><pre><code>conda create -n envL2D python=3.9 pip</code></pre>
 <p>By running this command a new environment will be installed within your home directory.</p>
 <ol start="2" style="list-style-type: decimal"><li>The environment can be activated as:</li>
-</ol><pre><code>conda activate ./envL2D </code></pre>
+</ol><pre><code>conda activate envL2D </code></pre>
 <p>If you have an Apple Mac running Apple Silicon (to include any of M1 and M2 series chips), skip to step 4, otherwise follow step 3, and then skip straight to step 9 (bypassing steps 4-8).</p>
 <ol start="3" style="list-style-type: decimal"><li>The packages required for this lesson are in the file <a href="data/requirements.txt">requirements.txt</a>. In order to install them in your environment, write this command on your terminal. Please note, that you will need to explicitly provide the filepath for your requirements.txt file, or have it located within your current working directory.</li>
-</ol><pre><code> envL2D/bin/pip3 install -r requirements.txt</code></pre>
+</ol><pre><code> pip3 install -r requirements.txt</code></pre>
 <ol start="4" style="list-style-type: decimal"><li>
 <p>If you are running a machine with Apple Silicon (M1x or M2 chips), then you may need to install tensorflow separately, which can be done, as follows:</p>
 <p>Install TensorFlow dependencies from the Apple Conda channel:</p>
@@ -294,9 +294,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-md/index.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/index.html",
-  "dateCreated": "2022-09-21",
-  "dateModified": "2022-09-21",
-  "datePublished": "2022-09-21"
+  "dateCreated": "2022-09-22",
+  "dateModified": "2022-09-22",
+  "datePublished": "2022-09-22"
 }
 
   </script><script>
