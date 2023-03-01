@@ -67,8 +67,11 @@ This environment kernel needs to be added to your Jupyter notebook. This can be 
 python -m pip install tensorflow-datasets
 ```
 
-8. Install all the remaining required packages from the file [requirements2.txt](data/requirements.txt). This file does not have tensorflow packages as they have already been installed in steps 4-7 for users running Apple Silicon.
+8. Install all the remaining required packages from the file [requirements_apple_m.txt](data/requirements_apple_m.txt). This file does not have tensorflow packages as they have already been installed in steps 4-7 for users running Apple Silicon.
 
+```
+ pip3 install -r requirements_apple_m.txt
+```
 
 9. At this point, everything will have been installed in our new environment. This is now the time to add this environment in your Jupyter Notebook, which can be done as follows:
 
