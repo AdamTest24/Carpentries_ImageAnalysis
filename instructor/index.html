@@ -274,8 +274,9 @@ In Python, the use of virtual environments allows you to avoid installing Python
 <ol start="7" style="list-style-type: decimal"><li>(Optional, but recommended) Install TensorFlow Datasets to run benchmarks included in this repo:</li>
 </ol><p>This environment kernel needs to be added to your Jupyter notebook. This can be done as:</p>
 <pre><code>python -m pip install tensorflow-datasets</code></pre>
-<ol start="8" style="list-style-type: decimal"><li><p>Install all the remaining required packages from the file <a href="data/requirements.txt">requirements2.txt</a>. This file does not have tensorflow packages as they have already been installed in steps 4-7 for users running Apple Silicon.</p></li>
-<li><p>At this point, everything will have been installed in our new environment. This is now the time to add this environment in your Jupyter Notebook, which can be done as follows:</p></li>
+<ol start="8" style="list-style-type: decimal"><li>Install all the remaining required packages from the file <a href="data/requirements_apple_m.txt">requirements_apple_m.txt</a>. This file does not have tensorflow packages as they have already been installed in steps 4-7 for users running Apple Silicon.</li>
+</ol><pre><code> pip3 install -r requirements_apple_m.txt</code></pre>
+<ol start="9" style="list-style-type: decimal"><li>At this point, everything will have been installed in our new environment. This is now the time to add this environment in your Jupyter Notebook, which can be done as follows:</li>
 </ol><pre><code>conda install -c anaconda ipykernel
 python -m ipykernel install --user --name=envL2D</code></pre>
 <p style="text-align: justify;">
@@ -337,9 +338,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-md/instructor/index.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/instructor/index.html",
-  "dateCreated": "2022-09-22",
-  "dateModified": "2023-02-28",
-  "datePublished": "2023-02-28"
+  "dateCreated": "2023-03-01",
+  "dateModified": "2023-03-01",
+  "datePublished": "2023-03-01"
 }
 
   </script><script>
