@@ -85,11 +85,11 @@
   Microscopic Image Analysis
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: NaN%" class="percentage">
-    NaN%
+<aside class="col-md-12 lesson-progress"><div style="width: 0%" class="percentage">
+    0%
   </div>
   <div class="progress l2d">
-    <div class="progress-bar l2d" role="progressbar" style="width: NaN%" aria-valuenow="NaN" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar l2d" role="progressbar" style="width: 0%" aria-valuenow="0" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -236,8 +236,8 @@
 
         
 
-<p><a href="01-section1.ipynb"><strong>Download Chapter notebook (ipynb)</strong></a></p>
-<p><a href="01-section1.md.pdf"><strong>Download Chapter pdf</strong></a></p>
+<p><a href="../01-section1.ipynb"><strong>Download Chapter notebook (ipynb)</strong></a></p>
+<p><a href="../01-section1.md.pdf"><strong>Download Chapter pdf</strong></a></p>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
 <div class="row g-0">
@@ -273,7 +273,9 @@
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="why-is-image-analysis-important" class="callout-inner">
-<h3 class="callout-title"><strong>Why is Image Analysis important?</strong></h3>
+<h3 class="callout-title">
+<strong>Why is Image Analysis important?</strong><a class="anchor" aria-label="anchor" href="#discussion1"></a>
+</h3>
 <div class="callout-content">
 <p>Image Analysis extracts meaningful data and can be useful in many different applications. Such as:</p>
 <ol style="list-style-type: decimal"><li><p>Analysing fluorescent digital slides, which can help to quantify the area of staining of a particular biomarker.</p></li>
@@ -333,7 +335,8 @@ The <em>Python Imaging Library (PIL)</em> has a large number of modules and subm
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span></code></pre>
 </div>
 </div>
-<section id="loading-images"><h2 class="section-heading">Loading images</h2>
+<section id="loading-images"><h2 class="section-heading">Loading images<a class="anchor" aria-label="anchor" href="#loading-images"></a>
+</h2>
 <hr class="half-width"><p>To begin, let’s read in all the images from a directory, and then load an image into memory using the <strong>open</strong> function from the <strong>Image</strong> module of <em>Python Imaging Library</em>. This function opens and identifies the given image file.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -499,7 +502,8 @@ In microscopy, the fluorescent images are labelled with three colours: red, gree
 </div>
 <figure><img src="../fig/img3.png" class="figure mx-auto d-block"></figure><p>and enlarged:</p>
 <pre><code><span><span class="va">im</span></span></code></pre>
-<figure><img src="../fig/combined.png" class="figure mx-auto d-block"> The combined image shows red (nuclei) and blue (cytoplasm) colors.</figure></section><section id="data-exploration"><h2 class="section-heading">Data Exploration</h2>
+<figure><img src="../fig/combined.png" class="figure mx-auto d-block"> The combined image shows red (nuclei) and blue (cytoplasm) colors.</figure></section><section id="data-exploration"><h2 class="section-heading">Data Exploration<a class="anchor" aria-label="anchor" href="#data-exploration"></a>
+</h2>
 <hr class="half-width"><p style="text-align: justify;">
 In image analysis, one of the most common tasks is to look at the distribution of pixel intensities, and display this as a histogram. For example: we can count how many times each pixel value (or range) appears in an image, and display this as a bar. This allows us to get a quick estimate of the intensities present in an image and to check for problems like saturation. We are going to plot the intensities of channel 1 and 3 as histograms.
 </p>
@@ -563,7 +567,8 @@ The histograms show that there is a very high intensity of fluorescence for nucl
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="do-it-yourself---exercise-1" class="callout-inner">
-<h3 class="callout-title">Do it Yourself - Exercise 1</h3>
+<h3 class="callout-title">Do it Yourself - Exercise 1<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+</h3>
 <div class="callout-content">
 <p>Plot a histogram for equalised image, and show intensities of nuclei and cytoplasm.</p>
 </div>
@@ -576,7 +581,7 @@ The histograms show that there is a very high intensity of fluorescence for nucl
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 
 </div>
@@ -644,7 +649,8 @@ As an example, we can use functions to flexibly rescale our image data. This hel
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="do-it-yourself---exercise-2" class="callout-inner">
-<h3 class="callout-title">Do it Yourself - Exercise 2</h3>
+<h3 class="callout-title">Do it Yourself - Exercise 2<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+</h3>
 <div class="callout-content">
 <p>Normalise the combined image with respect to cytoplasm.</p>
 </div>
@@ -657,7 +663,7 @@ As an example, we can use functions to flexibly rescale our image data. This hel
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 
 </div>
@@ -665,8 +671,10 @@ As an example, we can use functions to flexibly rescale our image data. This hel
 </div>
 </div>
 </div>
-</section><section id="tea-break"><h2 class="section-heading">Tea Break</h2>
-<hr class="half-width"></section><section id="data-visualisation"><h2 class="section-heading">Data Visualisation</h2>
+</section><section id="tea-break"><h2 class="section-heading">Tea Break<a class="anchor" aria-label="anchor" href="#tea-break"></a>
+</h2>
+<hr class="half-width"></section><section id="data-visualisation"><h2 class="section-heading">Data Visualisation<a class="anchor" aria-label="anchor" href="#data-visualisation"></a>
+</h2>
 <hr class="half-width"><p>Now we can plot histograms of the normalised intensities in channel 1, channel 3, and the background.</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -702,7 +710,8 @@ From a python plotting library called <a href="https://seaborn.pydata.org" class
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="note" class="callout-inner">
-<h3 class="callout-title">Note</h3>
+<h3 class="callout-title">Note<a class="anchor" aria-label="anchor" href="#callout1"></a>
+</h3>
 <div class="callout-content">
 <p>This plot might take a bit longer to run, as there are a large number of data points.</p>
 </div>
@@ -728,7 +737,8 @@ From a python plotting library called <a href="https://seaborn.pydata.org" class
 <span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
 <figure><img src="../fig/01-section1-rendered-unnamed-chunk-15-9.png" width="1920" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
-</section><section id="selecting-part-of-an-image"><h2 class="section-heading">Selecting part of an image</h2>
+</section><section id="selecting-part-of-an-image"><h2 class="section-heading">Selecting part of an image<a class="anchor" aria-label="anchor" href="#selecting-part-of-an-image"></a>
+</h2>
 <hr class="half-width"><p>It is also possible to analyse a small region of an image. The image can be cropped, and then analyses can be performed on the selected region.</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -801,7 +811,8 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="do-it-yourself---exercise-3" class="callout-inner">
-<h3 class="callout-title">Do it Yourself - Exercise 3</h3>
+<h3 class="callout-title">Do it Yourself - Exercise 3<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+</h3>
 <div class="callout-content">
 <p>Move the rectangle towards left so that it contains a few cells. Now plot the histogram again and see the differences.</p>
 </div>
@@ -814,7 +825,7 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 
 </div>
@@ -826,7 +837,8 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="do-it-yourself---exercise-4" class="callout-inner">
-<h3 class="callout-title">Do it Yourself - Exercise 4</h3>
+<h3 class="callout-title">Do it Yourself - Exercise 4<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+</h3>
 <div class="callout-content">
 <p>Repeat this process for other images (in the folder) and save 3-4 examples of cells with nuclei and cytoplasm marked</p>
 </div>
@@ -839,15 +851,17 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 
 </div>
 </div>
 </div>
 </div>
-</section><section id="lunch-break"><h2 class="section-heading">Lunch Break</h2>
-<hr class="half-width"></section><section id="image-clustering"><h2 class="section-heading">Image clustering</h2>
+</section><section id="lunch-break"><h2 class="section-heading">Lunch Break<a class="anchor" aria-label="anchor" href="#lunch-break"></a>
+</h2>
+<hr class="half-width"></section><section id="image-clustering"><h2 class="section-heading">Image clustering<a class="anchor" aria-label="anchor" href="#image-clustering"></a>
+</h2>
 <hr class="half-width"><p><a href="https://scikit-learn.org/stable/modules/clustering.html" class="external-link">Clustering Methods</a></p>
 <figure><img src="../fig/ClusterMethods.png" alt="Methods Comparison" class="figure mx-auto d-block"><img src="../fig/Clustering_comparison.png" alt="Success Comparison" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -927,7 +941,8 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="do-it-yourself---exercise-5" class="callout-inner">
-<h3 class="callout-title">Do it Yourself - Exercise 5</h3>
+<h3 class="callout-title">Do it Yourself - Exercise 5<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+</h3>
 <div class="callout-content">
 <p>Change n_components to 2, 4, 5 and 6 and compare the results.</p>
 </div>
@@ -940,7 +955,7 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 
 </div>
@@ -952,7 +967,8 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="do-it-yourself---exercise-6" class="callout-inner">
-<h3 class="callout-title">Do it Yourself - Exercise 6</h3>
+<h3 class="callout-title">Do it Yourself - Exercise 6<a class="anchor" aria-label="anchor" href="#challenge6"></a>
+</h3>
 <div class="callout-content">
 <p>Apply the Kmeans algorithm to the images and compare the result of the clustering for different choices of n_components.</p>
 <p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html" class="external-link">Documentation</a># To import:</p>
@@ -967,16 +983,18 @@ This plot compares the intensity of the pixels in the total image (blue) to thos
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 
 </div>
 </div>
 </div>
 </div>
-</section><section id="tea-break-1"><h2 class="section-heading">Tea Break</h2>
+</section><section id="tea-break-1"><h2 class="section-heading">Tea Break<a class="anchor" aria-label="anchor" href="#tea-break-1"></a>
+</h2>
 <hr class="half-width"></section><section id="section"><h2 class="section-heading"></h2>
-<hr class="half-width"></section><section id="segmentation"><h2 class="section-heading">Segmentation</h2>
+<hr class="half-width"></section><section id="segmentation"><h2 class="section-heading">Segmentation<a class="anchor" aria-label="anchor" href="#segmentation"></a>
+</h2>
 <hr class="half-width"><p>Image segmentation allows us to locate objects and boundaries (lines, curves, <em>etc.</em>) within an image. Conventional methods make use of a threshold value to distinguish between different regions and/or cells. In this lesson, we will use a Python package called <a href="https://github.com/stardist/stardist" class="external-link"><strong>StarDist</strong></a>, which makes use of deep learning methods to perform nuclei segmentation. It is designed particularly for nuclei segmentation. <strong>StarDist</strong> comes with pretrained models, that are likely suitable for your micrograph images. However, it is also possible to train your model specifically for your dataset.</p>
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1062,7 +1080,8 @@ print("The total number of nuclei in the image are: ", len(details['points']))
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="do-it-yourself---exercise-7" class="callout-inner">
-<h3 class="callout-title">Do it Yourself - Exercise 7</h3>
+<h3 class="callout-title">Do it Yourself - Exercise 7<a class="anchor" aria-label="anchor" href="#challenge7"></a>
+</h3>
 <div class="callout-content">
 <p>Repeat segmentation for other images.</p>
 </div>
@@ -1075,7 +1094,7 @@ print("The total number of nuclei in the image are: ", len(details['points']))
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 
 </div>
@@ -1087,7 +1106,8 @@ print("The total number of nuclei in the image are: ", len(details['points']))
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="do-it-yourself---exercise-8" class="callout-inner">
-<h3 class="callout-title">Do it Yourself - Exercise 8</h3>
+<h3 class="callout-title">Do it Yourself - Exercise 8<a class="anchor" aria-label="anchor" href="#challenge8"></a>
+</h3>
 <div class="callout-content">
 <p>Repeat segmentation for all 12 images and plot number of nuclei per image.</p>
 </div>
@@ -1100,7 +1120,7 @@ print("The total number of nuclei in the image are: ", len(details['points']))
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 
 </div>
@@ -1112,7 +1132,8 @@ print("The total number of nuclei in the image are: ", len(details['points']))
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="do-it-yourself---exercise-9" class="callout-inner">
-<h3 class="callout-title">Do it Yourself - Exercise 9</h3>
+<h3 class="callout-title">Do it Yourself - Exercise 9<a class="anchor" aria-label="anchor" href="#challenge9"></a>
+</h3>
 <div class="callout-content">
 <p>Repeat segmentation for cytoplasm channel, what do you notice? Explain your observation for any pecularities.</p>
 </div>
@@ -1125,7 +1146,7 @@ print("The total number of nuclei in the image are: ", len(details['points']))
   DIY ANSWER
   </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
 <div class="accordion-body">
 
 </div>
@@ -1135,7 +1156,8 @@ print("The total number of nuclei in the image are: ", len(details['points']))
 <p style="text-align: justify;">
 If you have done the above exercise of using <strong>stardist</strong> to perform segmentation for the cytoplasm channel, then you may have noticed some peculiarities. These can be justified by StarDist being designed for accurate segmentation of nuclei. However, if you are interested in cytoplasm segmentation, then using <strong>cellpose</strong> is better suited for this application. This Python package is more specialised, and better applied to cell and nucleus segmentation. After completing this workshop, you will observe that <strong>stardist</strong> and <strong>cellpose</strong> both work in a similar fashion. For more information and documentation, please follow this <a href="https://github.com/MouseLand/cellpose" class="external-link">link</a>.
 </p>
-</section><section id="summary-and-conclusions"><h2 class="section-heading">Summary and Conclusions</h2>
+</section><section id="summary-and-conclusions"><h2 class="section-heading">Summary and Conclusions<a class="anchor" aria-label="anchor" href="#summary-and-conclusions"></a>
+</h2>
 <hr class="half-width"><p style="text-align: justify;">
 In undertaking this workshop, we have learned to import, explore and analyse fluorescence microscopy images, and how to perform some basic image analyses using several packages, in Python. We have also learned how to perform clustering analyses, through implementing unsupervised machine learning algorithms (GMM). Further to this, we provided an introduction into the use of deep learning algorithms for use in nuclei segmentation, which can provide a fast, accurate and powerful count of the nuclei present in an image; this can be invaluable for analysing large amounts of data. Following the guided links, you can start to explore more advanced image analysis techniques, and <em>Learn To Discover</em> how these can help you further your own work, and research.
 </p>
@@ -1144,7 +1166,8 @@ In undertaking this workshop, we have learned to import, explore and analyse flu
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints</h3>
+<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+</h3>
 <div class="callout-content">
 <ul><li>The key image processing libraries in Python include <code>Python Imaging Library</code>, <code>Sci-kit Image</code>, <code>Scipy.ndimage</code> and <code>OpenCV</code>.</li>
 <li>
@@ -1193,9 +1216,9 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/LearnToDiscover/sandpaper/tree/l2d" class="external-link">sandpaper (0.9.0)</a>,
+        <p>Built with <a href="https://github.com/LearnToDiscover/sandpaper/tree/l2d" class="external-link">sandpaper (0.11.9)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/e815ea1a34f6eda01a3c9ab9643e35aa051e1938" class="external-link">pegboard (0.4.3)</a>,
-      and <a href="https://github.com/LearnToDiscover/varnish/tree/c72a9c21616682c29279523e56b331ed24509f1c" class="external-link">varnish (0.2.14)</a>.</p>
+      and <a href="https://github.com/LearnToDiscover/varnish/tree/f412e8bbc14a5110120155e1af9282842877c62f" class="external-link">varnish (0.2.14)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1208,7 +1231,7 @@ any links that you are not going to use.
   "@context": "https://schema.org",
   "@type": "TrainingMaterial",
   "@id": "https://carpentries.github.io/workbench-template-md/instructor/01-section1.html",
-  "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/0.9-DRAFT-2020_12_08",
+  "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, The Carpentries",
   "name": "Microscopic Image Analysis",
@@ -1217,7 +1240,7 @@ any links that you are not going to use.
   "identifier": "https://carpentries.github.io/workbench-template-md/instructor/01-section1.html",
   "dateCreated": "2023-03-01",
   "dateModified": "2023-03-14",
-  "datePublished": "2023-03-14"
+  "datePublished": "2023-03-21"
 }
 
   </script><script>
