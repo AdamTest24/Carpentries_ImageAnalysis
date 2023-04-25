@@ -258,16 +258,6 @@
       ],
       "Hash": "5e3c5dc0b071b21fa128676560dbe94d"
     },
-    "renv": {
-      "Package": "renv",
-      "Version": "0.15.4",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "utils"
-      ],
-      "Hash": "c1078316e1d4f70275fc1ea60c0bc431"
-    },
     "reticulate": {
       "Package": "reticulate",
       "Version": "1.24",
